@@ -9,13 +9,17 @@ public class InputManager : MonoBehaviour
 {
     private TankMotor motor;
     private TankData data;
+
+    public int myScore;
+    public int killPoints;
     public enum InputScheme { WASD, arrowKeys };
     public InputScheme input = InputScheme.WASD;
     // Start is called before the first frame update
     void Start()
     {
         motor = gameObject.GetComponent<TankMotor>();
-        data = gameObject.GetComponent<TankData>();        
+        data = gameObject.GetComponent<TankData>();
+        myScore = GetComponent<TankData>().Score;
     }
 
     // Update is called once per frame
@@ -93,8 +97,13 @@ public class InputManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                Instantiate(data.Bullet, data.shotPoint.position, transform.rotation);
-                data.timeBtwShots = data.startTimeBtwShots;
+                GameObject bulletInstance;
+                bulletInstance = Instantiate(data.Bullet, data.shotPoint.position, data.shotPoint.rotation);
+
+                bulletInstance.GetComponent<Bullet>().Shooter = this.gameObject;
+
+                //Instantiate(data.Bullet, data.shotPoint.position, transform.rotation);
+                data.timeBtwShots = data.startTimeBtwShots;                
             }
         }
         else

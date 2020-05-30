@@ -6,11 +6,15 @@ public class PlayerController : MonoBehaviour
 {
     private TankData data;
     private TankMotor motor;
+    public int myScore;
+    public int killPoints;
+
     // Start is called before the first frame update
     void Start()
     {
         data = GetComponent<TankData>();
         motor = GetComponent<TankMotor>();
+        myScore = GetComponent<TankData>().Score;
     }
 
     // Update is called once per frame

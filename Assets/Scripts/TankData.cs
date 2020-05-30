@@ -15,7 +15,6 @@ public class TankData : MonoBehaviour
     public GameObject Bullet;
     public Transform shotPoint;
 
-
     public float timeBtwShots;
     public float startTimeBtwShots;
 

@@ -134,7 +134,7 @@ GameObject:
   - component: {fileID: 213221624}
   m_Layer: 0
   m_Name: pilllar (4)
-  m_TagString: Enemy
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -318,7 +318,7 @@ GameObject:
   - component: {fileID: 434574250}
   m_Layer: 0
   m_Name: pilllar (1)
-  m_TagString: Enemy
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -558,7 +558,7 @@ GameObject:
   - component: {fileID: 767751107}
   m_Layer: 0
   m_Name: pilllar
-  m_TagString: Enemy
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -650,7 +650,7 @@ GameObject:
   - component: {fileID: 1158973037}
   m_Layer: 0
   m_Name: half wall
-  m_TagString: Enemy
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -874,7 +874,7 @@ GameObject:
   - component: {fileID: 1762410250}
   m_Layer: 0
   m_Name: half wall (1)
-  m_TagString: Enemy
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -966,7 +966,7 @@ GameObject:
   - component: {fileID: 1964594594}
   m_Layer: 0
   m_Name: pilllar (2)
-  m_TagString: Enemy
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1095,7 +1095,7 @@ GameObject:
   - component: {fileID: 2111520526}
   m_Layer: 0
   m_Name: pilllar (3)
-  m_TagString: Enemy
+  m_TagString: Environment
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1191,6 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655e7ec5110493d41a2664dcb1f12361, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myScore: 0
   killPoints: 100
 --- !u!1001 &8388983082882352405
 PrefabInstance:

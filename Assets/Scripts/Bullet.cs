@@ -5,24 +5,24 @@ using UnityEngine;
 
 public class Bullet : MonoBehaviour
 {
-    private TankData data;
     private Rigidbody rb;
-    private GameObject Tank;
-    private TankData TanksData;
 
     public float bulletSpeed;
     public float bulletLifeTime;
+
+    public GameObject Shooter;
 
     public GameObject destroyEffect;
 
     // Start is called before the first frame update
     void Start()
     {
-        data = gameObject.GetComponent<TankData>();
         rb = gameObject.GetComponent<Rigidbody>();
 
         // Destroy bullet after a set amount of time
         Invoke("DestroyBullet", bulletLifeTime);
+
+       // Shooter = GameObject.GetComponentInParent<TankData>();
     }
 
     // Update is called once per frame
@@ -40,7 +40,9 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player")
+        if(collision.gameObject.GetComponent<TankData>().health <= 0)
+
+        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Environment")
         {
             Destroy(this.gameObject);
         }       
