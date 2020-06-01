@@ -120,6 +120,8 @@ GameObject:
   - component: {fileID: 2587353814932864302}
   - component: {fileID: 8921145851817373541}
   - component: {fileID: 4533911963088280915}
+  - component: {fileID: 6306032598749433336}
+  - component: {fileID: 1717937479594971524}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -178,6 +180,7 @@ MonoBehaviour:
   reverseSpeed: 7
   health: 100
   damage: 10
+  Score: 0
   Bullet: {fileID: 2320207252078975745, guid: 190e91ac17dbbd04d883ce9a66d82cf3, type: 3}
   shotPoint: {fileID: 2587353814753925658}
   timeBtwShots: 0
@@ -192,6 +195,32 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1f6bc7a95e9e7604ebfea35c4a7a459f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &6306032598749433336
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587353814936357090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 655e7ec5110493d41a2664dcb1f12361, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myScore: 0
+  killPoints: 100
+--- !u!114 &1717937479594971524
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2587353814936357090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 953ff8e888211aa42bc1959d1c68f7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2587353814936357092

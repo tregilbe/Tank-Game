@@ -40,8 +40,6 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.GetComponent<TankData>().health <= 0)
-
         if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Environment")
         {
             Destroy(this.gameObject);
