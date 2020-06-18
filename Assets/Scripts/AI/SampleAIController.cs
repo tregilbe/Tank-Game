@@ -10,10 +10,20 @@ public class SampleAIController : MonoBehaviour
     public Transform[] waypoints;
     public float closeEnough = 1.0f;
     public int currentWaypoint = 0;
+    public enum LoopType
+    {
+        Stop,
+        Loop,
+        PingPong
+    };
+
+    public LoopType loopType;
+
 
     private TankData data;
     private TankMotor motor;
     private Transform tf;
+    private bool isPatrolForward = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +46,70 @@ public class SampleAIController : MonoBehaviour
 
         if (Vector3.SqrMagnitude(waypoints[currentWaypoint].position - tf.position) < (closeEnough * closeEnough))
         {
+            if (loopType == LoopType.Stop)
+            {
+                StopLoop();
+            }
+            else if (loopType == LoopType.PingPong)
+            {
+                PingPongLoop();
+            }
+            else if (loopType == LoopType.Loop)
+            {
+                LoopLoop();
+            }
+            else
+            {
+                Debug.LogWarning("[SampleAIController] Unimplemented loop type.");
+            }
+        }
+    }
+
+    private void LoopLoop()
+    {
+        if (currentWaypoint < waypoints.Length - 1)
+        {
+            currentWaypoint++;
+        }
+        else
+        {
+            currentWaypoint = 0;
+        }
+    }
+
+    private void PingPongLoop()
+    {
+        if (isPatrolForward)
+        {
             if (currentWaypoint < waypoints.Length - 1)
             {
                 currentWaypoint++;
             }
+            else
+            {
+                isPatrolForward = false;
+                currentWaypoint--;
+            }
+        }
+        else
+        {
+            if (currentWaypoint > 0)
+            {
+                currentWaypoint--;
+            }
+            else
+            {
+                isPatrolForward = true;
+                currentWaypoint++;
+            }
+        }
+    }
+
+    private void StopLoop()
+    {
+        if (currentWaypoint < waypoints.Length - 1)
+        {
+            currentWaypoint++;
         }
     }
 }

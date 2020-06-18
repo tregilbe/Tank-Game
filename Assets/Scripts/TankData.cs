@@ -39,5 +39,4 @@ public class TankData : MonoBehaviour
             health -= damage;
         }
     }
-
 }

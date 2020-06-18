@@ -103,7 +103,7 @@ public class InputManager : MonoBehaviour
                 bulletInstance.GetComponent<Bullet>().Shooter = this.gameObject;
 
                 //Instantiate(data.Bullet, data.shotPoint.position, transform.rotation);
-                data.timeBtwShots = data.startTimeBtwShots;                
+                data.timeBtwShots = data.startTimeBtwShots;
             }
         }
         else

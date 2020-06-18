@@ -1,9 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using System.Net.Sockets;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class EnemyBullet : MonoBehaviour
 {
     private Rigidbody rb;
 
@@ -22,7 +21,7 @@ public class Bullet : MonoBehaviour
         // Destroy bullet after a set amount of time
         Invoke("DestroyBullet", bulletLifeTime);
 
-       // Shooter = GameObject.GetComponentInParent<TankData>();
+        // Shooter = GameObject.GetComponentInParent<TankData>();
     }
 
     // Update is called once per frame
@@ -40,9 +39,9 @@ public class Bullet : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if(collision.gameObject.tag == "Enemy" || collision.gameObject.tag == "Player" || collision.gameObject.tag == "Environment")
+        if (collision.gameObject.tag != "Enemy")
         {
             Destroy(this.gameObject);
-        }       
+        }
     }
 }

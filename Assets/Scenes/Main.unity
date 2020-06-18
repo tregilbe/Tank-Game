@@ -411,7 +411,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100012, guid: 65e92f227846e794883569c427a9c4c3, type: 3}
       propertyPath: m_Name
-      value: Tank
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 400012, guid: 65e92f227846e794883569c427a9c4c3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -456,6 +456,11 @@ PrefabInstance:
     - target: {fileID: 400012, guid: 65e92f227846e794883569c427a9c4c3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6351876976488161579, guid: 65e92f227846e794883569c427a9c4c3,
+        type: 3}
+      propertyPath: startTimeBtwShots
+      value: 0.75
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 65e92f227846e794883569c427a9c4c3, type: 3}
@@ -1360,7 +1365,7 @@ PrefabInstance:
     - target: {fileID: 2587353814936786114, guid: 6fc00928500fd8247936a6bd6089d33c,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.219
       objectReference: {fileID: 0}
     - target: {fileID: 2587353814936786114, guid: 6fc00928500fd8247936a6bd6089d33c,
         type: 3}
@@ -1409,13 +1414,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6306032598749433336, guid: 6fc00928500fd8247936a6bd6089d33c,
         type: 3}
-      propertyPath: myScore
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1717937479594971524, guid: 6fc00928500fd8247936a6bd6089d33c,
-        type: 3}
-      propertyPath: waypoints.Array.size
-      value: 3
+      propertyPath: waitingTime
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1717937479594971524, guid: 6fc00928500fd8247936a6bd6089d33c,
         type: 3}
@@ -1432,5 +1432,15 @@ PrefabInstance:
       propertyPath: waypoints.Array.data[2]
       value: 
       objectReference: {fileID: 1617724396}
+    - target: {fileID: 2587353814932864302, guid: 6fc00928500fd8247936a6bd6089d33c,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2587353814932864302, guid: 6fc00928500fd8247936a6bd6089d33c,
+        type: 3}
+      propertyPath: m_StepOffset
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6fc00928500fd8247936a6bd6089d33c, type: 3}

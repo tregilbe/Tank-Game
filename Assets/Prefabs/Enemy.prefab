@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2587353814753925661}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.242, z: 0.812}
+  m_LocalPosition: {x: 0, y: 0.242, z: 0.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2587353814936786114}
@@ -122,7 +122,7 @@ GameObject:
   - component: {fileID: 4533911963088280915}
   - component: {fileID: 6306032598749433336}
   - component: {fileID: 1717937479594971524}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -181,10 +181,10 @@ MonoBehaviour:
   health: 100
   damage: 10
   Score: 0
-  Bullet: {fileID: 2320207252078975745, guid: 190e91ac17dbbd04d883ce9a66d82cf3, type: 3}
+  Bullet: {fileID: 5511261746862600712, guid: 8cd0654613fb4954ca603a2a406279ed, type: 3}
   shotPoint: {fileID: 2587353814753925658}
   timeBtwShots: 0
-  startTimeBtwShots: 0.75
+  startTimeBtwShots: 2
 --- !u!114 &4533911963088280915
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -223,6 +223,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 953ff8e888211aa42bc1959d1c68f7ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  waypoints:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  closeEnough: 1
+  currentWaypoint: 0
+  loopType: 0
 --- !u!1 &2587353814936357092
 GameObject:
   m_ObjectHideFlags: 0

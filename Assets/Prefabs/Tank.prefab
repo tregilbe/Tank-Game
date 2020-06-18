@@ -343,7 +343,7 @@ GameObject:
   - component: {fileID: 6351876976488161579}
   - component: {fileID: 2090673525911999261}
   - component: {fileID: 5102017480998463406}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Tank
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -402,7 +402,8 @@ MonoBehaviour:
   reverseSpeed: 7
   health: 100
   damage: 10
-  Bullet: {fileID: 2320207252078975745, guid: 190e91ac17dbbd04d883ce9a66d82cf3, type: 3}
+  Score: 0
+  Bullet: {fileID: 7578091379500446084, guid: 9dcf860dd3528194e9ec981ff2d74535, type: 3}
   shotPoint: {fileID: 455201876}
   timeBtwShots: 0
   startTimeBtwShots: 0.75
@@ -430,6 +431,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f725176638aa8f44083829617e7e78e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  myScore: 0
+  killPoints: 0
   input: 0
 --- !u!1 &100014
 GameObject:
@@ -533,7 +536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 455201875}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.242, z: 0.814}
+  m_LocalPosition: {x: 0, y: 0.242, z: 0.869}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 400012}
