@@ -9,11 +9,13 @@ public class TankMotor : MonoBehaviour
     // Need a reference to the Character Controller component.
     private CharacterController characterController;
     private Transform tf;
+    private Rigidbody rb;
 
     void Start()
     {
         characterController = gameObject.GetComponent<CharacterController>();
         tf = gameObject.GetComponent<Transform>();
+        rb = gameObject.GetComponent<Rigidbody>();
     }
     // Handle Moving the Tank
     public void Move(float speed)

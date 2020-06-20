@@ -24,19 +24,16 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         if (timer > waitingTime)
         {
             //Action
-            Shoot();
+            //Shoot();
             timer = 0;
         }
         else
         {
             timer += Time.deltaTime;
         }
-
-        
     }
 
     void Shoot()
