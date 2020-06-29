@@ -1,26 +1,17 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
-public class AIController : MonoBehaviour
+public class TurretAIController : MonoBehaviour
 {
     public enum AIPersonality
     {
-        Cautious,
-        Aggressive,
-        Turret,
-        Soldier
+        Turret
     }
     public enum AIState
-    {
+    { 
         Patrol,
-        WaitForBackup,
-        Advance,
-        Attack,
-        Flee,
-        Turret,
-        Stalk
+        Turret
     }
 
     public AIPersonality currentPersonality;
@@ -30,6 +21,7 @@ public class AIController : MonoBehaviour
     private TankMotor motor;
     public Transform target;
     private Transform tf;
+    public EnemyController EC;
 
     public Transform[] waypoints;
     public float closeEnough = 1.0f;
@@ -47,9 +39,6 @@ public class AIController : MonoBehaviour
     public float avoidanceTime = 2f;
     private float exitTime;
 
-    public enum AvoidStage { notAvoiding, rotateUntilCanMove, moveForSeconds }
-    public AvoidStage avoidanceStage;
-
     public float stateEnterTime;
 
     private void Start()
@@ -57,29 +46,17 @@ public class AIController : MonoBehaviour
         data = GetComponent<TankData>();
         motor = GetComponent<TankMotor>();
         tf = GetComponent<Transform>();
+        EC = GetComponent<EnemyController>();
     }
     private void Update()
     {
+        TurretMode();
+
         switch (currentPersonality)
         {
-            case AIPersonality.Cautious:
-                currentAIState = AIState.Patrol;
-                CautiousTankFSM();
-                break;
-
-            case AIPersonality.Aggressive:
-                currentAIState = AIState.Attack;
-                AggressiveTankFSM();
-                break;
-
             case AIPersonality.Turret:
                 currentAIState = AIState.Turret;
                 TurretTankFSM();
-                break;
-
-            case AIPersonality.Soldier:
-                currentAIState = AIState.Stalk;
-                SoldierTankFSM();
                 break;
 
             default:
@@ -100,35 +77,6 @@ public class AIController : MonoBehaviour
         stateEnterTime = Time.time;
     }
 
-    private void CautiousTankFSM()
-    {
-        switch (currentAIState)
-        {
-            case AIState.Patrol:
-                Patrol();
-                // Check for transitions
-                // Should we flee?
-                if (CheckForFlee())
-                {
-                    Flee();
-                }
-                // Should we wait for backup?
-                break;
-            case AIState.Advance:
-                break;
-        }
-    }
-
-    private void AggressiveTankFSM()
-    {
-        switch (currentAIState)
-        {
-            case AIState.Attack:
-                Chase();
-                break;
-        }
-    }
-
     private void TurretTankFSM()
     {
         switch (currentAIState)
@@ -139,35 +87,12 @@ public class AIController : MonoBehaviour
         }
     }
 
-    private void SoldierTankFSM()
-    {
-        switch (currentAIState)
-        {
-            case AIState.Stalk:
-                SoldierMode();
-                break;
-        }
-    }
-
-    private void Flee()
-    {
-                Vector3 vectorToTarget = target.position - tf.position;
-                Vector3 vectorAwayFromTarget = -vectorToTarget;
-                vectorAwayFromTarget.Normalize();
-                Vector3 fleePosition = vectorAwayFromTarget + tf.position;
-                motor.RotateTowards(fleePosition, data.rotateSpeed);
-                motor.Move(data.moveSpeed);  
-    }
-
     private void TurretMode()
     {
-        
+        Vector3 vectorToTarget = target.position - transform.position;
+        motor.RotateTowards(vectorToTarget, data.rotateSpeed);
     }
 
-    private void SoldierMode()
-    {
-
-    }
     private void Patrol()
     {
         // Do the patrol behaviors
@@ -257,75 +182,4 @@ public class AIController : MonoBehaviour
             currentWaypoint++;
         }
     }
-
-    
-    void Avoid()
-    {
-        if (avoidanceStage == AvoidStage.rotateUntilCanMove)
-        {
-            motor.Rotate(-1 * data.rotateSpeed);
-
-            if (CanMove(data.moveSpeed))
-            {
-                avoidanceStage = AvoidStage.moveForSeconds;
-                exitTime = avoidanceTime;
-            }
-        }
-        else if (avoidanceStage == AvoidStage.moveForSeconds)
-        {
-            if (CanMove(data.moveSpeed))
-            {
-                exitTime -= Time.deltaTime;
-                motor.Move(data.moveSpeed);
-
-                if (exitTime <= 0)
-                {
-                    avoidanceStage = AvoidStage.notAvoiding;
-                }
-            }
-            else
-            {
-                avoidanceStage = AvoidStage.rotateUntilCanMove;
-            }
-        }
-    }
-
-    void Chase()
-    {
-        if (CanMove(data.moveSpeed))
-        {
-            //move if can move
-            if (motor.RotateTowards(target.position, data.rotateSpeed))
-            {
-                // Do nothing
-            }
-            else
-            {
-                motor.Move(data.moveSpeed);
-            }
-
-        }
-        else
-        {
-            avoidanceStage = AvoidStage.rotateUntilCanMove;
-        }
-
-    }
-
-    public bool CanMove(float speed)
-    {
-
-        // Raycast forward
-        RaycastHit hit;
-
-        if (Physics.Raycast(tf.position, tf.forward, out hit, speed))
-        {
-            if (!hit.collider.CompareTag("Player"))
-            {
-                return false;
-            }
-        }
-        return true;
-    }
-
 }

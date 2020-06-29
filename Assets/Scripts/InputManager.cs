@@ -97,10 +97,7 @@ public class InputManager : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Space))
             {
-                GameObject bulletInstance;
-                bulletInstance = Instantiate(data.Bullet, data.shotPoint.position, data.shotPoint.rotation);
-
-                bulletInstance.GetComponent<Bullet>().Shooter = this.gameObject;
+                Instantiate(data.Bullet, data.shotPoint.position, data.shotPoint.rotation);
 
                 //Instantiate(data.Bullet, data.shotPoint.position, transform.rotation);
                 data.timeBtwShots = data.startTimeBtwShots;

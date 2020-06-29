@@ -1,26 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
 using UnityEngine;
 
-public class AIController : MonoBehaviour
+public class CautiousAIController : MonoBehaviour
 {
     public enum AIPersonality
     {
         Cautious,
-        Aggressive,
-        Turret,
-        Soldier
     }
+
     public enum AIState
     {
         Patrol,
         WaitForBackup,
         Advance,
         Attack,
-        Flee,
-        Turret,
-        Stalk
+        Flee
     }
 
     public AIPersonality currentPersonality;
@@ -58,6 +53,7 @@ public class AIController : MonoBehaviour
         motor = GetComponent<TankMotor>();
         tf = GetComponent<Transform>();
     }
+
     private void Update()
     {
         switch (currentPersonality)
@@ -65,21 +61,6 @@ public class AIController : MonoBehaviour
             case AIPersonality.Cautious:
                 currentAIState = AIState.Patrol;
                 CautiousTankFSM();
-                break;
-
-            case AIPersonality.Aggressive:
-                currentAIState = AIState.Attack;
-                AggressiveTankFSM();
-                break;
-
-            case AIPersonality.Turret:
-                currentAIState = AIState.Turret;
-                TurretTankFSM();
-                break;
-
-            case AIPersonality.Soldier:
-                currentAIState = AIState.Stalk;
-                SoldierTankFSM();
                 break;
 
             default:
@@ -119,55 +100,16 @@ public class AIController : MonoBehaviour
         }
     }
 
-    private void AggressiveTankFSM()
-    {
-        switch (currentAIState)
-        {
-            case AIState.Attack:
-                Chase();
-                break;
-        }
-    }
-
-    private void TurretTankFSM()
-    {
-        switch (currentAIState)
-        {
-            case AIState.Turret:
-                TurretMode();
-                break;
-        }
-    }
-
-    private void SoldierTankFSM()
-    {
-        switch (currentAIState)
-        {
-            case AIState.Stalk:
-                SoldierMode();
-                break;
-        }
-    }
-
     private void Flee()
     {
-                Vector3 vectorToTarget = target.position - tf.position;
-                Vector3 vectorAwayFromTarget = -vectorToTarget;
-                vectorAwayFromTarget.Normalize();
-                Vector3 fleePosition = vectorAwayFromTarget + tf.position;
-                motor.RotateTowards(fleePosition, data.rotateSpeed);
-                motor.Move(data.moveSpeed);  
+        Vector3 vectorToTarget = target.position - tf.position;
+        Vector3 vectorAwayFromTarget = -vectorToTarget;
+        vectorAwayFromTarget.Normalize();
+        Vector3 fleePosition = vectorAwayFromTarget + tf.position;
+        motor.RotateTowards(fleePosition, data.rotateSpeed);
+        motor.Move(data.moveSpeed);
     }
 
-    private void TurretMode()
-    {
-        
-    }
-
-    private void SoldierMode()
-    {
-
-    }
     private void Patrol()
     {
         // Do the patrol behaviors
@@ -258,7 +200,7 @@ public class AIController : MonoBehaviour
         }
     }
 
-    
+
     void Avoid()
     {
         if (avoidanceStage == AvoidStage.rotateUntilCanMove)
@@ -290,28 +232,6 @@ public class AIController : MonoBehaviour
         }
     }
 
-    void Chase()
-    {
-        if (CanMove(data.moveSpeed))
-        {
-            //move if can move
-            if (motor.RotateTowards(target.position, data.rotateSpeed))
-            {
-                // Do nothing
-            }
-            else
-            {
-                motor.Move(data.moveSpeed);
-            }
-
-        }
-        else
-        {
-            avoidanceStage = AvoidStage.rotateUntilCanMove;
-        }
-
-    }
-
     public bool CanMove(float speed)
     {
 
@@ -327,5 +247,4 @@ public class AIController : MonoBehaviour
         }
         return true;
     }
-
 }

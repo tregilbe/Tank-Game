@@ -1,0 +1,22 @@
+AI Personalities
+
+Cowardly Tank
+
+Tank patrols around waypoints, then flees when the player is below 50 health.
+
+
+Aggressive Tank
+
+Tank Charges player with intent to kill, letting nothing get in its way... once obstacle avoidance is fixed.
+
+
+Turret Tank
+
+Tank patrols like a cowardly tank, however rotates towards a sound, then aims at player if seen and 
+shoots when aimed correctly. For now it shows aiming and firing along with patrolling, 
+this is due to issues with the new hearing and seeing components. 
+
+
+Soldier Tank
+
+A strong and sturdy Tank, will not flee from battle. Follows the player at a distance to try and eliminate them.
