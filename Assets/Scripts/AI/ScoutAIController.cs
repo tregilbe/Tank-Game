@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Transactions;
 using UnityEngine;
 
-public class TurretAIController : MonoBehaviour
+public class ScoutAIController : MonoBehaviour
 {
     public enum AIPersonality
     {
@@ -22,6 +23,9 @@ public class TurretAIController : MonoBehaviour
     public Transform target;
     private Transform tf;
     public EnemyController EC;
+
+    public Hearing hearing;
+    public Vision vision;
 
     public Transform[] waypoints;
     public float closeEnough = 1.0f;
@@ -43,19 +47,19 @@ public class TurretAIController : MonoBehaviour
 
     private void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         data = GetComponent<TankData>();
         motor = GetComponent<TankMotor>();
         tf = GetComponent<Transform>();
         EC = GetComponent<EnemyController>();
+        hearing = GetComponent<Hearing>();
+        vision = GetComponent<Vision>();
     }
     private void Update()
     {
-        TurretMode();
-
         switch (currentPersonality)
         {
             case AIPersonality.Turret:
-                currentAIState = AIState.Turret;
                 TurretTankFSM();
                 break;
 
@@ -81,19 +85,74 @@ public class TurretAIController : MonoBehaviour
     {
         switch (currentAIState)
         {
+            case AIState.Patrol:
+
+                Patrol();
+
+                if (hearing.CanHear(target.gameObject) == true)
+                {
+                    Aim();
+
+                    if (vision.CanSee(target.gameObject) == true)
+                    {
+                        currentAIState = AIState.Turret;
+                    }
+                    else
+                    {
+                        Patrol();
+                    }
+                }
+
+                break;
+
             case AIState.Turret:
-                TurretMode();
+
+                if (vision.CanSee(target.gameObject) == true)
+                {
+                    Aim();
+                    Shoot();
+                }
+                else
+                {
+                    currentAIState = AIState.Patrol;
+                }
+                
                 break;
         }
     }
 
-    private void TurretMode()
+    void Aim()
     {
-        Vector3 vectorToTarget = target.position - transform.position;
-        motor.RotateTowards(vectorToTarget, data.rotateSpeed);
+        motor.RotateTowards(target.position, data.rotateSpeed);
     }
 
-    private void Patrol()
+    void Shoot()
+    {
+        if (data.timeBtwShots <= 0)
+        {
+            // Instantiate the vullet prefab
+            GameObject Temporary_Bullet_Handler;
+              Temporary_Bullet_Handler = Instantiate(data.Bullet, data.shotPoint.transform.position, data.shotPoint.transform.rotation) as GameObject;
+
+              // Retrieve the Rigidbody of the bullet 
+             Rigidbody Temporary_RigidBody;
+             Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
+
+             // add force to the bullet
+             Temporary_RigidBody.AddForce(transform.forward * data.bulletSpeed);
+
+                // Clean up, set timer till the bullet is destroyed
+             Destroy(Temporary_Bullet_Handler, data.bulletLifetime);
+
+            data.timeBtwShots = data.startTimeBtwShots;
+        }
+        else
+        {
+            data.timeBtwShots -= Time.deltaTime;
+        }
+    }
+   
+        private void Patrol()
     {
         // Do the patrol behaviors
         if (motor.RotateTowards(waypoints[currentWaypoint].position, data.rotateSpeed))

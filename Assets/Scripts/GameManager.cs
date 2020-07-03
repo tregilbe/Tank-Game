@@ -10,6 +10,8 @@ public class GameManager : Singleton<GameManager>
     public TankData Player1;
     public TankData Enemies;
 
+    public List<PlayerSpawnPoint> playerSpawnPoints;
+
     void Start()
     {
         Player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<TankData>();

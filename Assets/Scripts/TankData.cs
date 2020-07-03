@@ -17,6 +17,8 @@ public class TankData : MonoBehaviour
 
     public float timeBtwShots;
     public float startTimeBtwShots;
+    public float bulletSpeed;
+    public float bulletLifetime;
 
     void Start()
     {

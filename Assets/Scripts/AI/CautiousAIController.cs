@@ -49,6 +49,7 @@ public class CautiousAIController : MonoBehaviour
 
     private void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         data = GetComponent<TankData>();
         motor = GetComponent<TankMotor>();
         tf = GetComponent<Transform>();
@@ -59,7 +60,6 @@ public class CautiousAIController : MonoBehaviour
         switch (currentPersonality)
         {
             case AIPersonality.Cautious:
-                currentAIState = AIState.Patrol;
                 CautiousTankFSM();
                 break;
 
@@ -85,13 +85,24 @@ public class CautiousAIController : MonoBehaviour
     {
         switch (currentAIState)
         {
+
+            case AIState.Flee:
+                if (avoidanceStage != AvoidStage.notAvoiding)
+                {
+                    Avoid();
+                }
+                else
+                {
+                    Flee();
+                }
+                break;
             case AIState.Patrol:
                 Patrol();
                 // Check for transitions
                 // Should we flee?
                 if (CheckForFlee())
                 {
-                    Flee();
+                    currentAIState = AIState.Flee; 
                 }
                 // Should we wait for backup?
                 break;
@@ -107,7 +118,16 @@ public class CautiousAIController : MonoBehaviour
         vectorAwayFromTarget.Normalize();
         Vector3 fleePosition = vectorAwayFromTarget + tf.position;
         motor.RotateTowards(fleePosition, data.rotateSpeed);
-        motor.Move(data.moveSpeed);
+
+        if (CanMove(data.moveSpeed))
+        {
+            motor.Move(data.moveSpeed);
+        }
+        else
+        {
+            avoidanceStage = AvoidStage.rotateUntilCanMove;
+            Debug.Log("Flee Loop Error");
+        }
     }
 
     private void Patrol()
@@ -144,7 +164,8 @@ public class CautiousAIController : MonoBehaviour
 
     private bool CheckForFlee()
     {
-        if (target.GetComponent<TankData>().health <= 50)
+        //(target.GetComponent<TankData>().health <= 50)
+        if (data.health <= 50)
         {
             return true;
         }

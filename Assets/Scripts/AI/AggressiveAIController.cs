@@ -32,6 +32,7 @@ public class AggressiveAIController : MonoBehaviour
 
     private void Start()
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         data = GetComponent<TankData>();
         motor = GetComponent<TankMotor>();
         tf = GetComponent<Transform>();
@@ -39,7 +40,8 @@ public class AggressiveAIController : MonoBehaviour
 
     private void Update()
     {
-        if (!(avoidanceStage == AvoidStage.notAvoiding))
+        //(!(avoidanceStage == AvoidStage.notAvoiding))
+        if (avoidanceStage != AvoidStage.notAvoiding)
         {
             Avoid();
         }
@@ -59,8 +61,6 @@ public class AggressiveAIController : MonoBehaviour
                 Debug.LogWarning("Unimplemented personality");
                 break;
         }
-
-
     }
 
     public void ChangeState(AIState newState)
@@ -79,8 +79,7 @@ public class AggressiveAIController : MonoBehaviour
     {
         switch (currentAIState)
         {
-            case AIState.Attack:
-                Chase();
+            case AIState.Attack:              
                 break;
         }
     }
@@ -94,6 +93,7 @@ public class AggressiveAIController : MonoBehaviour
 
             if (CanMove(data.moveSpeed))
             {
+                Debug.Log("Stage 1 done");
                 avoidanceStage = AvoidStage.moveForSeconds;
                 exitTime = avoidanceTime;
             }
@@ -102,6 +102,7 @@ public class AggressiveAIController : MonoBehaviour
         {
             if (CanMove(data.moveSpeed))
             {
+                Debug.Log("Stage 2 done");
                 exitTime -= Time.deltaTime;
                 motor.Move(data.moveSpeed);
 
@@ -119,24 +120,52 @@ public class AggressiveAIController : MonoBehaviour
 
     void Chase()
     {
+        motor.RotateTowards(target.position, data.rotateSpeed);
         if (CanMove(data.moveSpeed))
         {
             //move if can move
-            if (motor.RotateTowards(target.position, data.rotateSpeed))
-            {
+            //if (motor.RotateTowards(target.position, data.rotateSpeed))
+            //{
                 // Do nothing
-            }
-            else
-            {
+           // }
+            //else
+            //{
                 motor.Move(data.moveSpeed);
-            }
-
+            Shoot();
+           // }
         }
         else
         {
             avoidanceStage = AvoidStage.rotateUntilCanMove;
+            Debug.Log("Chase Loop Error");
         }
 
+    }
+
+    void Shoot()
+    {
+        if (data.timeBtwShots <= 0)
+        {
+            // Instantiate the vullet prefab
+            GameObject Temporary_Bullet_Handler;
+            Temporary_Bullet_Handler = Instantiate(data.Bullet, data.shotPoint.transform.position, data.shotPoint.transform.rotation) as GameObject;
+
+            // Retrieve the Rigidbody of the bullet 
+            Rigidbody Temporary_RigidBody;
+            Temporary_RigidBody = Temporary_Bullet_Handler.GetComponent<Rigidbody>();
+
+            // add force to the bullet
+            Temporary_RigidBody.AddForce(transform.forward * data.bulletSpeed);
+
+            // Clean up, set timer till the bullet is destroyed
+            Destroy(Temporary_Bullet_Handler, data.bulletLifetime);
+
+            data.timeBtwShots = data.startTimeBtwShots;
+        }
+        else
+        {
+            data.timeBtwShots -= Time.deltaTime;
+        }
     }
 
     public bool CanMove(float speed)

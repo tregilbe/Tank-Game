@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -10,14 +11,33 @@ public class MapGenerator : MonoBehaviour
     private float roomHeight = 50f;
     public GameObject[] gridPrefabs;
     private Room[,] grid;
+    public int mapSeed;
 
+    public enum MapType
+    {
+        Seeded,
+        Random,
+        MapOfTheDay
+    }
+
+    public MapType mapType = MapType.Random;
+
+    public int DateToInt(DateTime dateToUse)
+    {
+        return dateToUse.Year + dateToUse.Month + 
+            dateToUse.Day + dateToUse.Hour + 
+            dateToUse.Minute + dateToUse.Second + 
+            dateToUse.Millisecond;
+    }
     public GameObject RandomRoomPrefab()
     {
-        return gridPrefabs[Random.Range(0, gridPrefabs.Length)];
+        return gridPrefabs[UnityEngine.Random.Range(0, gridPrefabs.Length)];
     }
 
     public void GenerateGrid()
     {
+        // UnityEngine.Random.seed = mapSeed;
+        UnityEngine.Random.InitState(mapSeed);
         // Start with an empty grid
         grid = new Room[columns, rows];
 
@@ -39,7 +59,6 @@ public class MapGenerator : MonoBehaviour
 
                 // Give the room a meaningful name
                 tempRoomObj.name = "Room " + currentColumn + ", " + currentRow;
-
 
                 Room tempRoom = tempRoomObj.GetComponent<Room>();
 
@@ -87,7 +106,27 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        StartGame();
+    }
+
+    public void StartGame()
+    {
+        switch (mapType)
+        {
+            case MapType.MapOfTheDay:
+                mapSeed = DateToInt(DateTime.Now.Date);
+                break;
+            case MapType.Random:
+                mapSeed = DateToInt(DateTime.Now);
+                break;
+            case MapType.Seeded:
+                break;
+            default:
+                Debug.LogWarning("[MapGenerator] Map type not implemented");
+                break;
+        }
         GenerateGrid();
+        // Spawn player
     }
 
     // Update is called once per frame
