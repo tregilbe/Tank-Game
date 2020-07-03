@@ -165,7 +165,7 @@ public class CautiousAIController : MonoBehaviour
     private bool CheckForFlee()
     {
         //(target.GetComponent<TankData>().health <= 50)
-        if (data.health <= 50)
+        if (data.currentHealth <= 50)
         {
             return true;
         }

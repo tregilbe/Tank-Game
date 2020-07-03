@@ -342,6 +342,7 @@ GameObject:
   - component: {fileID: 6069961121518209083}
   - component: {fileID: 4419406373930752144}
   - component: {fileID: 7698733765829300222}
+  - component: {fileID: 2420753470564664291}
   m_Layer: 9
   m_Name: Aggressive Enemy
   m_TagString: Enemy
@@ -398,7 +399,9 @@ MonoBehaviour:
   moveSpeed: 5
   rotateSpeed: 90
   reverseSpeed: 7
+  currentHealth: 0
   health: 100
+  maxHealth: 0
   damage: 10
   Score: 0
   Bullet: {fileID: 5511261746862600712, guid: 8cd0654613fb4954ca603a2a406279ed, type: 3}
@@ -452,6 +455,19 @@ MonoBehaviour:
   avoidanceTime: 2
   avoidanceStage: 0
   stateEnterTime: 0
+--- !u!114 &2420753470564664291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5278013173223103882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5522ea09d2981f499b5c3e982ed991a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerups: []
 --- !u!1 &5278013173223103884
 GameObject:
   m_ObjectHideFlags: 0

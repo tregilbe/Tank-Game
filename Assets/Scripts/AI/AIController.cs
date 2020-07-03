@@ -202,7 +202,7 @@ public class AIController : MonoBehaviour
 
     private bool CheckForFlee()
     {
-        if (target.GetComponent<TankData>().health <= 50)
+        if (target.GetComponent<TankData>().currentHealth <= 50)
         {
             return true;
         }

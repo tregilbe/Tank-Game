@@ -8,7 +8,9 @@ public class TankData : MonoBehaviour
     public float rotateSpeed = 90f;
     public float reverseSpeed = 7.0f;
 
-    public int health;
+    public float currentHealth;
+    //public float health;
+    public float maxHealth;
     public int damage;
     public int Score;
 
@@ -23,12 +25,20 @@ public class TankData : MonoBehaviour
     void Start()
     {
         Score = 0;
+        maxHealth = 100;
+        currentHealth = 100;
     }
 
     void Update()
     {
+        // Make sure the current health is never about the max
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
         // Make sure the objectg is destroyed if health goes below 0
-        if (health <= 0)
+        if (currentHealth <= 0)
         {
             Destroy(gameObject);
         }
@@ -38,7 +48,7 @@ public class TankData : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
-            health -= damage;
+            currentHealth -= damage;
         }
     }
 }

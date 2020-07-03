@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2320207252078975745
+--- !u!1 &3207099140969922498
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7238477627263661160}
-  - component: {fileID: 4567589274739751168}
-  - component: {fileID: 965715698970396287}
-  - component: {fileID: 7084560251341973616}
-  - component: {fileID: 1649202239071468730}
-  - component: {fileID: 265614213450678638}
+  - component: {fileID: 7639232006818662629}
+  - component: {fileID: 623676670219802265}
+  - component: {fileID: 5035026847275996612}
+  - component: {fileID: 2240308354381001585}
+  - component: {fileID: -4926798038042585995}
   m_Layer: 0
-  m_Name: Bullet
-  m_TagString: Bullet
+  m_Name: Health Powerup
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &7238477627263661160
+--- !u!4 &7639232006818662629
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320207252078975745}
+  m_GameObject: {fileID: 3207099140969922498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.99}
-  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
+  m_LocalPosition: {x: 2.3, y: 1.347, z: -11.08}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &4567589274739751168
+--- !u!33 &623676670219802265
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320207252078975745}
+  m_GameObject: {fileID: 3207099140969922498}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &965715698970396287
+--- !u!23 &5035026847275996612
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320207252078975745}
+  m_GameObject: {fileID: 3207099140969922498}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -60,7 +59,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ce480fe58b98ea145a12bf4b69eedc53, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -81,48 +80,35 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &7084560251341973616
+--- !u!135 &2240308354381001585
 SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320207252078975745}
+  m_GameObject: {fileID: 3207099140969922498}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
---- !u!54 &1649202239071468730
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320207252078975745}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &265614213450678638
+--- !u!114 &-4926798038042585995
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2320207252078975745}
+  m_GameObject: {fileID: 3207099140969922498}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9634bf064da3ad244807088fad4ef950, type: 3}
+  m_Script: {fileID: 11500000, guid: eb3ba7b422e2a3045b0ecdd096d7382b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bulletSpeed: 1000
-  bulletLifeTime: 1.5
-  Shooter: {fileID: 0}
-  destroyEffect: {fileID: 0}
+  powerup:
+    speedModifier: 0
+    healthModifier: 20
+    maxHealthModifier: 0
+    duration: 0
+    isPermanent: 1
+  FeedbackAudioClip: {fileID: 0}

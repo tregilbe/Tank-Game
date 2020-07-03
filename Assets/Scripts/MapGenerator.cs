@@ -127,6 +127,7 @@ public class MapGenerator : MonoBehaviour
         }
         GenerateGrid();
         // Spawn player
+        
     }
 
     // Update is called once per frame

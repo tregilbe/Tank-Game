@@ -17,4 +17,15 @@ public class GameManager : Singleton<GameManager>
         Player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<TankData>();
         Enemies = GameObject.FindGameObjectWithTag("Enemy").GetComponent<TankData>();
     }
+
+    protected override void Awake()
+    {
+        base.Awake();
+        playerSpawnPoints = new List<PlayerSpawnPoint>();
+    }
+
+    public void SpawnPlayer()
+    {
+        // TODO: Write code to spawn the player at a random spawn point.
+    }
 }
