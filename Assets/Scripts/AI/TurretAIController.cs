@@ -33,6 +33,8 @@ public class TurretAIController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.Enemies.Add(this.gameObject.GetComponent<TankData>());
+
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         data = GetComponent<TankData>();
         motor = GetComponent<TankMotor>();
@@ -53,6 +55,11 @@ public class TurretAIController : MonoBehaviour
                 Debug.LogWarning("Unimplemented personality");
                 break;
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.Enemies.Remove(this.gameObject.GetComponent<TankData>());
     }
 
     public void ChangeState(AIState newState)

@@ -292,7 +292,6 @@ MonoBehaviour:
   rotateSpeed: 90
   reverseSpeed: 7
   currentHealth: 0
-  health: 100
   maxHealth: 0
   damage: 10
   Score: 0
@@ -345,6 +344,7 @@ MonoBehaviour:
   previousAIState: 0
   target: {fileID: 0}
   waypoints:
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}

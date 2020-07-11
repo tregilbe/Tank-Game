@@ -106,7 +106,7 @@ public class MapGenerator : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartGame();
+        //StartGame();
     }
 
     public void StartGame()
@@ -127,7 +127,7 @@ public class MapGenerator : MonoBehaviour
         }
         GenerateGrid();
         // Spawn player
-        
+        GameManager.Instance.SpawnPlayer();
     }
 
     // Update is called once per frame

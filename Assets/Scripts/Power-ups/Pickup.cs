@@ -6,6 +6,7 @@ public class Pickup : MonoBehaviour
 {
     public Powerup powerup;
     public AudioClip FeedbackAudioClip;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -34,5 +35,15 @@ public class Pickup : MonoBehaviour
 
             Destroy(this.gameObject);
         }
+    }
+
+    void Awake()
+    {
+        GameManager.Instance.activePickups.Add(this.gameObject.GetComponent<Pickup>());      
+    }
+
+    void OnDestroy()
+    {
+        GameManager.Instance.activePickups.Remove(this.gameObject.GetComponent<Pickup>());
     }
 }

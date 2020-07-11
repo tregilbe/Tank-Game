@@ -185,7 +185,6 @@ MonoBehaviour:
   rotateSpeed: 90
   reverseSpeed: 7
   currentHealth: 0
-  health: 100
   maxHealth: 0
   damage: 10
   Score: 0
@@ -630,13 +629,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 9043640883855574969}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.16, y: 2.43, z: -4.96}
+  m_LocalRotation: {x: 0.511272, y: -0, z: -0, w: 0.8594189}
+  m_LocalPosition: {x: -0.16, y: 8.71, z: -4.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 9043640883194785860}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 61.497, y: 0, z: 0}
 --- !u!20 &9043640883855574971
 Camera:
   m_ObjectHideFlags: 0
@@ -662,7 +661,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 86.27895
   orthographic: 0
   orthographic size: 5
   m_Depth: -1

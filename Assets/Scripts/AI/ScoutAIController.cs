@@ -47,6 +47,8 @@ public class ScoutAIController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.Enemies.Add(this.gameObject.GetComponent<TankData>());
+
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         data = GetComponent<TankData>();
         motor = GetComponent<TankMotor>();
@@ -54,6 +56,8 @@ public class ScoutAIController : MonoBehaviour
         EC = GetComponent<EnemyController>();
         hearing = GetComponent<Hearing>();
         vision = GetComponent<Vision>();
+
+        waypoints = GameManager.Instance.currentScoutSpawnPoint.waypoints;
     }
     private void Update()
     {
@@ -67,6 +71,11 @@ public class ScoutAIController : MonoBehaviour
                 Debug.LogWarning("Unimplemented personality");
                 break;
         }
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.Enemies.Remove(this.gameObject.GetComponent<TankData>());
     }
 
     public void ChangeState(AIState newState)

@@ -43,3 +43,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5998ffc3d239c9144a5ce9d58c65dd65, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  MG: {fileID: 0}
+  playerPrefab: {fileID: 9043640883194489956, guid: dafda482f218108498f3c3f288283bc5,
+    type: 3}
+  turretPrefab: {fileID: 8688305736328144973, guid: eac00368b11384745947fe97668bdb6a,
+    type: 3}
+  scoutPrefab: {fileID: 7336172908617624532, guid: 784ac04a3502c2944a8cc543053deffb,
+    type: 3}
+  cautiousPrefab: {fileID: 6973056485126876792, guid: ed8af6acc018fd8458fff37c9106eb42,
+    type: 3}
+  aggressivePrefab: {fileID: 5278013173223103882, guid: 6d820f31e1070fc438dada2e1a0ce088,
+    type: 3}
+  demoNumber: 13
+  Player1: {fileID: 0}
+  Enemies: {fileID: 0}
+  playerSpawnPoints: []
+  currentPlayerSpawnPoint: {fileID: 0}
+  turretSpawnPoints: []
+  currentTurretSpawnPoint: {fileID: 0}
+  scoutSpawnPoints: []
+  currentScoutSpawnPoint: {fileID: 0}
+  cautiousSpawnPoints: []
+  currentCautiousSpawnPoint: {fileID: 0}
+  aggressiveSpawnPoints: []
+  currentAggressiveSpawnPoint: {fileID: 0}
+  activePickups: []

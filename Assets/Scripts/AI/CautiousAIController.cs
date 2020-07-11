@@ -49,10 +49,19 @@ public class CautiousAIController : MonoBehaviour
 
     private void Start()
     {
+        GameManager.Instance.Enemies.Add(this.gameObject.GetComponent<TankData>());
+
         target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         data = GetComponent<TankData>();
         motor = GetComponent<TankMotor>();
         tf = GetComponent<Transform>();
+
+        waypoints = GameManager.Instance.currentCautiousSpawnPoint.waypoints;
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.Enemies.Remove(this.gameObject.GetComponent<TankData>());
     }
 
     private void Update()
