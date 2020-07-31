@@ -8,10 +8,12 @@ public class CameraSplitter : Singleton<CameraSplitter>
     // Start is called before the first frame update
     void Start()
     {
-        SetCameraPositions();
+        // Handle this in the titlemenu script
+
+        // SetCameraPositions();
     }
 
-    private void SetCameraPositions()
+    public void SetCameraPositions()
     {
         if (cameras.Count == 1)
         {
