@@ -127,6 +127,7 @@ GameObject:
   - component: {fileID: 9043640882613092756}
   - component: {fileID: 9043640882613092779}
   - component: {fileID: -3303415842909600148}
+  - component: {fileID: 4803978577507187473}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -276,6 +277,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerups: []
+--- !u!114 &4803978577507187473
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9043640883194489956}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b71534b2e7271fe46a309fa730a2bda8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerScoreData:
+    score: 0
+    name: Player
 --- !u!1 &9043640883194489958
 GameObject:
   m_ObjectHideFlags: 0

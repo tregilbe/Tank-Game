@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class GameManager : Singleton<GameManager>
 {
+    private const int HighScoreTableSize = 3;
     public MapGenerator MG;
 
     public GameObject playerPrefab;
@@ -54,7 +55,7 @@ public class GameManager : Singleton<GameManager>
         //SpawnScout();
         //SpawnCautious();
 
-        Player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<TankData>();
+        //Player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<TankData>();
         //Enemies = GameObject.FindGameObjectWithTag("Enemy").GetComponent<TankData>();
     }
 
@@ -72,6 +73,12 @@ public class GameManager : Singleton<GameManager>
         cautiousSpawnPoints = new List<CautiousSpawnPoint>();
         aggressiveSpawnPoints = new List<AggressiveSpawnPoint>();
         activePickups = new List<Pickup>();
+
+        // Sort scores in order
+        scores.Sort();
+        scores.Reverse();
+        // Limit the size of the high score table
+        scores = scores.GetRange(index: 0, count: HighScoreTableSize);
     }
 
     public void ChoosePlayerSpawn()

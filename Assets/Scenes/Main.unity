@@ -1366,6 +1366,61 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[0].score
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[1].score
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[2].score
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[0].name
+      value: Trent
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[1].name
+      value: Bob
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[2].name
+      value: Chad
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[3].score
+      value: 34
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[3].name
+      value: Dave
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[4].score
+      value: 19
+      objectReference: {fileID: 0}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: scores.Array.data[4].name
+      value: Erin
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6404226c866c5a04683254c77907b8d3, type: 3}
 --- !u!1 &1447388016
