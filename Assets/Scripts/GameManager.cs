@@ -39,6 +39,8 @@ public class GameManager : Singleton<GameManager>
 
     public List<Pickup> activePickups;
 
+    public List<ScoreData> scores = new List<ScoreData>();
+
     void Start()
     {
         MG = GameObject.FindGameObjectWithTag("MG").GetComponent<MapGenerator>();
@@ -48,9 +50,9 @@ public class GameManager : Singleton<GameManager>
 
         // enemies now spawn similar to player in the MapGen script
         //SpawnTurret();
-       // SpawnAggressive();
-       // SpawnScout();
-      //  SpawnCautious();
+        //SpawnAggressive();
+        //SpawnScout();
+        //SpawnCautious();
 
         Player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<TankData>();
         //Enemies = GameObject.FindGameObjectWithTag("Enemy").GetComponent<TankData>();
