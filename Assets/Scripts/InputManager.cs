@@ -26,7 +26,7 @@ public class InputManager : MonoBehaviour
     void Update()
     {
         HandleInput();        
-        Shoot();        
+        // Shoot();        
     }
 
     void HandleInput()
@@ -58,6 +58,12 @@ public class InputManager : MonoBehaviour
                     motor.Rotate(-data.rotateSpeed);
                 }
 
+                // Handle Shooting
+                if (Input.GetKey(KeyCode.KeypadEnter))
+                {
+                    Shoot();
+                }
+
                 break;
             case InputScheme.WASD:
                 // Handle Movement
@@ -82,6 +88,11 @@ public class InputManager : MonoBehaviour
                 else if (Input.GetKey(KeyCode.A))
                 {
                     motor.Rotate(-data.rotateSpeed);
+                }             
+                // Handle Shooting
+                if (Input.GetKey(KeyCode.Space))
+                {
+                    Shoot();
                 }
                 break;
 
@@ -95,13 +106,12 @@ public class InputManager : MonoBehaviour
     {
         if (data.timeBtwShots <= 0)
         {
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
+
                 Instantiate(data.Bullet, data.shotPoint.position, data.shotPoint.rotation);
 
                 //Instantiate(data.Bullet, data.shotPoint.position, transform.rotation);
                 data.timeBtwShots = data.startTimeBtwShots;
-            }
+            
         }
         else
         {
