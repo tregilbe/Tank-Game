@@ -128,6 +128,12 @@ public class MapGenerator : MonoBehaviour
         GenerateGrid();
         // Spawn player
         GameManager.Instance.SpawnPlayer();
+
+        // Spawn enemies
+        GameManager.Instance.SpawnAggressive();
+        GameManager.Instance.SpawnCautious();
+        GameManager.Instance.SpawnScout();
+        GameManager.Instance.SpawnTurret();
     }
 
     // Update is called once per frame

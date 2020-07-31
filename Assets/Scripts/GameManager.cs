@@ -43,12 +43,14 @@ public class GameManager : Singleton<GameManager>
     {
         MG = GameObject.FindGameObjectWithTag("MG").GetComponent<MapGenerator>();
 
-        MG.StartGame();
+        // Start game is now done through a button
+        // MG.StartGame();
 
-        SpawnTurret();
-        SpawnAggressive();
-        SpawnScout();
-        SpawnCautious();
+        // enemies now spawn similar to player in the MapGen script
+        //SpawnTurret();
+       // SpawnAggressive();
+       // SpawnScout();
+      //  SpawnCautious();
 
         Player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<TankData>();
         //Enemies = GameObject.FindGameObjectWithTag("Enemy").GetComponent<TankData>();
