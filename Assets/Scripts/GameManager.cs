@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -48,9 +49,14 @@ public class GameManager : Singleton<GameManager>
 
     public List<ScoreData> scores = new List<ScoreData>();
 
+    public Canvas MainMenuCanvas;
+
     void Start()
     {
         MG = GameObject.FindGameObjectWithTag("MG").GetComponent<MapGenerator>();
+
+        // Set main menu canvas as enabled, and disable the game over canvas
+        MainMenuCanvas.GetComponent<Canvas>().enabled = true;
 
         // Start game is now done through a button
         // MG.StartGame();
@@ -67,7 +73,12 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        
+        Player1 = GameObject.Find("Player1(Clone)").GetComponent<TankData>();
+
+        if (PlayerOneLives == 0 && Player1.currentHealth <= 0)
+        {
+            SceneManager.LoadScene("Game Over");
+        }
     }
 
     protected override void Awake()

@@ -2848,6 +2848,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 6218781335876374272, guid: 4f80ebd59eb07c144bd0a9e78566340a,
         type: 3}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: MainMenuCanvas
+      value: 
+      objectReference: {fileID: 1793016827}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: GameOverCanvas
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6404226c866c5a04683254c77907b8d3, type: 3}
 --- !u!1 &1447388016
@@ -3441,7 +3451,7 @@ GameObject:
   - component: {fileID: 1793016826}
   - component: {fileID: 1793016825}
   m_Layer: 5
-  m_Name: Screen Space Canvas
+  m_Name: MENU Screen Space Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

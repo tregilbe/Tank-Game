@@ -47,6 +47,7 @@ public class AggressiveAIController : MonoBehaviour
 
     private void Update()
     {
+        target = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
         //(!(avoidanceStage == AvoidStage.notAvoiding))
         if (avoidanceStage != AvoidStage.notAvoiding)
         {

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TitleMenu : MonoBehaviour
 {
@@ -28,5 +29,10 @@ public class TitleMenu : MonoBehaviour
         // What happens when the player presses the quit button
         Debug.Log("QUIT!");
         Application.Quit();
+    }
+
+     public void OnClickRetry()
+    {
+        SceneManager.LoadScene("Main");
     }
 }
