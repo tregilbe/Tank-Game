@@ -9,8 +9,8 @@ public class TankData : MonoBehaviour
     public float reverseSpeed = 7.0f;
 
     public float currentHealth;
-    //public float health;
     public float maxHealth;
+
     public int damage;
     public int Score;
 
@@ -21,6 +21,8 @@ public class TankData : MonoBehaviour
     public float startTimeBtwShots;
     public float bulletSpeed;
     public float bulletLifetime;
+
+    public int scoreTransfer;
 
     void Start()
     {
@@ -37,10 +39,49 @@ public class TankData : MonoBehaviour
             currentHealth = maxHealth;
         }
 
-        // Make sure the objectg is destroyed if health goes below 0
-        if (currentHealth <= 0)
+        // Make sure the object is destroyed if health goes below 0
+
+
+        if (this.gameObject.tag == "Enemy")
         {
-            Destroy(gameObject);
+            if (currentHealth <= 0)
+            {
+                Destroy(gameObject);
+            }
+        }
+
+        if (this.gameObject.name == "Player1(Clone)")
+        {
+            if (currentHealth <= 0)
+            {
+                if (GameManager.Instance.PlayerOneLives <= 0)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameManager.Instance.PlayerOneLives -= 1;
+                    GameManager.Instance.SpawnPlayerOne();
+                }
+            }
+        }
+
+        if (this.gameObject.tag == "Player2(Clone)")
+        {
+            if (currentHealth <= 0)
+            {
+                if (GameManager.Instance.PlayerTwoLives <= 0)
+                {
+                    Destroy(gameObject);
+                }
+                else
+                {
+                    Destroy(gameObject);
+                    GameManager.Instance.PlayerTwoLives -= 1;
+                    GameManager.Instance.SpawnPlayerTwo();
+                }
+            }
         }
     }
 

@@ -127,7 +127,7 @@ public class MapGenerator : MonoBehaviour
         }
         GenerateGrid();
         // Spawn player
-        GameManager.Instance.SpawnPlayer();
+        GameManager.Instance.SpawnPlayerOne();
 
         // Spawn enemies
         GameManager.Instance.SpawnAggressive();

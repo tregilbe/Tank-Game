@@ -9,6 +9,9 @@ public class GameManager : Singleton<GameManager>
     public MapGenerator MG;
 
     public GameObject playerPrefab;
+    public GameObject playerOnePrefab;
+    public GameObject playerTwoPrefab;
+
     public GameObject turretPrefab;
     public GameObject scoutPrefab;
     public GameObject cautiousPrefab;
@@ -19,6 +22,9 @@ public class GameManager : Singleton<GameManager>
     public int demoNumber = 13;
 
     public TankData Player1;
+    public TankData Player2;
+    public int PlayerOneLives = 3;
+    public int PlayerTwoLives = 3;
     //public TankData Enemies;
 
     public List<TankData> Enemies;
@@ -61,7 +67,7 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-
+        
     }
 
     protected override void Awake()
@@ -91,6 +97,20 @@ public class GameManager : Singleton<GameManager>
         currentPlayerSpawnPoint = playerSpawnPoints[Random.Range(0, playerSpawnPoints.Count - 1)]; // Use random.range to select a player spawnpoint
 
         Instantiate(playerPrefab, currentPlayerSpawnPoint.transform.position, currentPlayerSpawnPoint.transform.rotation);
+    }
+
+    public void SpawnPlayerOne()
+    {
+        currentPlayerSpawnPoint = playerSpawnPoints[Random.Range(0, playerSpawnPoints.Count - 1)]; // Use random.range to select a player spawnpoint
+
+        Instantiate(playerOnePrefab, currentPlayerSpawnPoint.transform.position, currentPlayerSpawnPoint.transform.rotation);
+    }
+
+    public void SpawnPlayerTwo()
+    {
+        currentPlayerSpawnPoint = playerSpawnPoints[Random.Range(0, playerSpawnPoints.Count - 1)]; // Use random.range to select a player spawnpoint
+
+        Instantiate(playerTwoPrefab, currentPlayerSpawnPoint.transform.position, currentPlayerSpawnPoint.transform.rotation);
     }
 
     public void SpawnTurret()
