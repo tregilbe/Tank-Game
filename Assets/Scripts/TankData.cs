@@ -67,7 +67,7 @@ public class TankData : MonoBehaviour
             }
         }
 
-        if (this.gameObject.tag == "Player2(Clone)")
+        if (this.gameObject.name == "Player2(Clone)")
         {
             if (currentHealth <= 0)
             {
@@ -83,6 +83,13 @@ public class TankData : MonoBehaviour
                 }
             }
         }
+
+        if (GameManager.Instance.PlayerOneLives == 0 && GameManager.Instance.PlayerTwoLives == 0)
+        {
+            GameManager.Instance.GameOver();
+            GameManager.Instance.PlayerOneLives = 3;
+            GameManager.Instance.PlayerTwoLives = 3;
+        }
     }
 
     void OnCollisionEnter(Collision collision)
@@ -90,6 +97,7 @@ public class TankData : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             currentHealth -= damage;
+            collision.gameObject.GetComponent<TankData>().Score += 1;
         }
     }
 }

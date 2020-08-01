@@ -29,6 +29,6 @@ public class CameraSplitter : Singleton<CameraSplitter>
     // Update is called once per frame
     void Update()
     {
-        
+        SetCameraPositions();
     }
 }

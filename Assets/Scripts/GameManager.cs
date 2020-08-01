@@ -73,12 +73,13 @@ public class GameManager : Singleton<GameManager>
 
     void Update()
     {
-        Player1 = GameObject.Find("Player1(Clone)").GetComponent<TankData>();
+       // if (PlayerOneLives == 0 && PlayerTwoLives == 0)
+       // {
+          //  SceneManager.LoadScene("Game Over");
+       // }
 
-        if (PlayerOneLives == 0 && Player1.currentHealth <= 0)
-        {
-            SceneManager.LoadScene("Game Over");
-        }
+        Player1 = GameObject.Find("Player1(Clone)").GetComponent<TankData>();
+        Player2 = GameObject.Find("Player2(Clone)").GetComponent<TankData>();
     }
 
     protected override void Awake()
@@ -150,5 +151,10 @@ public class GameManager : Singleton<GameManager>
         currentCautiousSpawnPoint = cautiousSpawnPoints[Random.Range(0, cautiousSpawnPoints.Count - 1)];
 
         Instantiate(cautiousPrefab, currentCautiousSpawnPoint.transform.position, currentCautiousSpawnPoint.transform.rotation);
+    }
+
+    public void GameOver()
+    {
+        SceneManager.LoadScene("Game Over");
     }
 }

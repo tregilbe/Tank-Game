@@ -88,7 +88,8 @@ public class InputManager : MonoBehaviour
                 else if (Input.GetKey(KeyCode.A))
                 {
                     motor.Rotate(-data.rotateSpeed);
-                }             
+                }
+                
                 // Handle Shooting
                 if (Input.GetKey(KeyCode.Space))
                 {

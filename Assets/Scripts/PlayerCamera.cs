@@ -12,4 +12,9 @@ public class PlayerCamera : MonoBehaviour
         playerCamera = GetComponent<Camera>();
         CameraSplitter.Instance.cameras.Add(playerCamera);
     }
+
+    void OnDestroy()
+    {
+        CameraSplitter.Instance.cameras.Remove(playerCamera);
+    }
 }
