@@ -6,7 +6,7 @@ using System;
 [System.Serializable]
 public class ScoreData : IComparable<ScoreData>
 {
-    public float score;
+    public int score;
     public string name;
 
     public int CompareTo(ScoreData other)

@@ -330,7 +330,7 @@ MonoBehaviour:
   currentHealth: 0
   maxHealth: 0
   damage: 10
-  Score: 0
+  Score: 10
   Bullet: {fileID: 7578091379500446084, guid: 9dcf860dd3528194e9ec981ff2d74535, type: 3}
   shotPoint: {fileID: 4174202239002657617}
   timeBtwShots: 0
@@ -420,9 +420,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b71534b2e7271fe46a309fa730a2bda8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 7046964252913579566}
   playerScoreData:
     score: 0
-    name: Player
+    name: Player1
 --- !u!1 &4174202239185097131
 GameObject:
   m_ObjectHideFlags: 0
