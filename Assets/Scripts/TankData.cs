@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class TankData : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class TankData : MonoBehaviour
     public float bulletLifetime;
 
     public int scoreTransfer;
+
+    public GameObject closest;
 
     void Start()
     {
@@ -97,7 +100,34 @@ public class TankData : MonoBehaviour
         if (collision.gameObject.tag == "Bullet")
         {
             currentHealth -= damage;
-            collision.gameObject.GetComponent<TankData>().Score += 1;
+        }
+    }
+
+    public GameObject FindClosestPlayer()
+    {
+        GameObject[] gos;
+        gos = GameObject.FindGameObjectsWithTag("Player");
+        GameObject closest = null;
+        float distance = Mathf.Infinity;
+        Vector3 position = transform.position;
+        foreach (GameObject go in gos)
+        {
+            Vector3 diff = go.transform.position - position;
+            float curDistance = diff.sqrMagnitude;
+            if (curDistance < distance)
+            {
+                closest = go;
+                distance = curDistance;
+            }
+        }
+        return closest;
+    }
+
+    public void OnDestroy()
+    {
+        if (this.gameObject.tag == "Enemy")
+        {
+            FindClosestPlayer().GetComponent<TankData>().Score += 10;
         }
     }
 }

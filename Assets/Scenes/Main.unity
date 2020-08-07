@@ -277,6 +277,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cameras: []
+  Player1: {fileID: 0}
+  Player2: {fileID: 0}
 --- !u!4 &112343686
 Transform:
   m_ObjectHideFlags: 0
