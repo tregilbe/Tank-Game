@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ChrisTutorials.Persistent;
 using UnityEngine;
 
 public class Pickup : MonoBehaviour
@@ -28,11 +29,6 @@ public class Pickup : MonoBehaviour
         {
             powerupController.AddPowerup(powerup);
 
-            if (FeedbackAudioClip != null)
-            {
-                AudioSource.PlayClipAtPoint(FeedbackAudioClip, transform.position, 1.0f);
-            }
-
             Destroy(this.gameObject);
         }
     }
@@ -44,6 +40,7 @@ public class Pickup : MonoBehaviour
 
     void OnDestroy()
     {
+        AudioManager.Instance.Play(FeedbackAudioClip, transform);
         GameManager.Instance.activePickups.Remove(this.gameObject.GetComponent<Pickup>());
     }
 }

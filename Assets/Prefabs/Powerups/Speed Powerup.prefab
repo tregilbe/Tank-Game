@@ -116,7 +116,7 @@ MonoBehaviour:
     maxHealthModifier: 0
     duration: 2
     isPermanent: 0
-  FeedbackAudioClip: {fileID: 0}
+  FeedbackAudioClip: {fileID: 8300000, guid: 411faa540719cfe4099363d6e9aa4df8, type: 3}
 --- !u!1 &2653632114279394460
 GameObject:
   m_ObjectHideFlags: 0

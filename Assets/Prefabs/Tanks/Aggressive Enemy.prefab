@@ -571,6 +571,8 @@ MonoBehaviour:
   bulletLifetime: 3
   scoreTransfer: 0
   closest: {fileID: 0}
+  tankDeath: {fileID: 8300000, guid: f01976c379cdc9047a6969d843710502, type: 3}
+  bulletHit: {fileID: 8300000, guid: 3c7d5d7c4b8a4754cb0961a44e63761f, type: 3}
 --- !u!114 &6069961121518209083
 MonoBehaviour:
   m_ObjectHideFlags: 0

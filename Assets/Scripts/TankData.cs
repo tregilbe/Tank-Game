@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ChrisTutorials.Persistent;
 using UnityEngine;
 using UnityEngine.SocialPlatforms.Impl;
 
@@ -27,6 +28,10 @@ public class TankData : MonoBehaviour
 
     public GameObject closest;
 
+    
+    public AudioClip tankDeath;
+    public AudioClip bulletHit;
+
     void Start()
     {
         Score = 0;
@@ -49,6 +54,7 @@ public class TankData : MonoBehaviour
         {
             if (currentHealth <= 0)
             {
+                AudioManager.Instance.Play(tankDeath, transform);
                 Destroy(gameObject);
             }
         }
@@ -59,10 +65,12 @@ public class TankData : MonoBehaviour
             {
                 if (GameManager.Instance.PlayerOneLives <= 0)
                 {
+                    AudioManager.Instance.Play(tankDeath, transform);
                     Destroy(gameObject);
                 }
                 else
                 {
+                    AudioManager.Instance.Play(tankDeath, transform);
                     Destroy(gameObject);
                     GameManager.Instance.PlayerOneLives -= 1;
                     GameManager.Instance.SpawnPlayerOne();
@@ -76,10 +84,12 @@ public class TankData : MonoBehaviour
             {
                 if (GameManager.Instance.PlayerTwoLives <= 0)
                 {
+                    AudioManager.Instance.Play(tankDeath, transform);
                     Destroy(gameObject);
                 }
                 else
                 {
+                    AudioManager.Instance.Play(tankDeath, transform);
                     Destroy(gameObject);
                     GameManager.Instance.PlayerTwoLives -= 1;
                     GameManager.Instance.SpawnPlayerTwo();
@@ -99,6 +109,7 @@ public class TankData : MonoBehaviour
     {
         if (collision.gameObject.tag == "Bullet")
         {
+            AudioManager.Instance.Play(bulletHit, transform);
             currentHealth -= damage;
         }
     }

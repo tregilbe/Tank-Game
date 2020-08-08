@@ -1,11 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using ChrisTutorials.Persistent;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class TitleMenu : MonoBehaviour
 {
     public Canvas CanvasObject;
+
+    public AudioClip buttonClip;
 
     public void StartGame()
     {
@@ -71,5 +75,10 @@ public class TitleMenu : MonoBehaviour
     public void SetPlayersToTwo()
     {
         GameManager.Instance.numOfPlayers = 2;
+    }
+
+    public void ButtonPress()
+    {
+        AudioManager.Instance.Play(buttonClip, transform);
     }
 }

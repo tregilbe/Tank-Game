@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using ChrisTutorials.Persistent;
 using UnityEngine;
 
 [RequireComponent(typeof(TankData))]
@@ -12,6 +13,8 @@ public class InputManager : MonoBehaviour
 
     public int myScore;
     public int killPoints;
+
+    public AudioClip tankFire;
     public enum InputScheme { WASD, arrowKeys };
     public InputScheme input = InputScheme.WASD;
     // Start is called before the first frame update
@@ -108,10 +111,11 @@ public class InputManager : MonoBehaviour
         if (data.timeBtwShots <= 0)
         {
 
-                Instantiate(data.Bullet, data.shotPoint.position, data.shotPoint.rotation);
+            Instantiate(data.Bullet, data.shotPoint.position, data.shotPoint.rotation);
+            AudioManager.Instance.Play(tankFire, transform);
 
-                //Instantiate(data.Bullet, data.shotPoint.position, transform.rotation);
-                data.timeBtwShots = data.startTimeBtwShots;
+            //Instantiate(data.Bullet, data.shotPoint.position, transform.rotation);
+            data.timeBtwShots = data.startTimeBtwShots;
             
         }
         else

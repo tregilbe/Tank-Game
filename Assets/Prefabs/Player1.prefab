@@ -339,6 +339,8 @@ MonoBehaviour:
   bulletLifetime: 0
   scoreTransfer: 0
   closest: {fileID: 0}
+  tankDeath: {fileID: 8300000, guid: f01976c379cdc9047a6969d843710502, type: 3}
+  bulletHit: {fileID: 8300000, guid: 3c7d5d7c4b8a4754cb0961a44e63761f, type: 3}
 --- !u!114 &2661115748810310680
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -365,6 +367,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   myScore: 0
   killPoints: 0
+  tankFire: {fileID: 8300000, guid: 8b150efc17e891c44aef449384f4d453, type: 3}
   input: 0
 --- !u!54 &4174202240742980711
 Rigidbody:
