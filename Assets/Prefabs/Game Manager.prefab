@@ -46,6 +46,10 @@ MonoBehaviour:
   MG: {fileID: 0}
   playerPrefab: {fileID: 9043640883194489956, guid: dafda482f218108498f3c3f288283bc5,
     type: 3}
+  playerOnePrefab: {fileID: 4174202239185097129, guid: 231cfb846f984a941a06dd710573dd2a,
+    type: 3}
+  playerTwoPrefab: {fileID: 6218781335876374272, guid: 4f80ebd59eb07c144bd0a9e78566340a,
+    type: 3}
   turretPrefab: {fileID: 8688305736328144973, guid: eac00368b11384745947fe97668bdb6a,
     type: 3}
   scoutPrefab: {fileID: 7336172908617624532, guid: 784ac04a3502c2944a8cc543053deffb,
@@ -54,9 +58,13 @@ MonoBehaviour:
     type: 3}
   aggressivePrefab: {fileID: 5278013173223103882, guid: 6d820f31e1070fc438dada2e1a0ce088,
     type: 3}
+  ScoutAI: {fileID: 0}
   demoNumber: 13
   Player1: {fileID: 0}
-  Enemies: {fileID: 0}
+  Player2: {fileID: 0}
+  PlayerOneLives: 3
+  PlayerTwoLives: 3
+  Enemies: []
   playerSpawnPoints: []
   currentPlayerSpawnPoint: {fileID: 0}
   turretSpawnPoints: []
@@ -68,3 +76,15 @@ MonoBehaviour:
   aggressiveSpawnPoints: []
   currentAggressiveSpawnPoint: {fileID: 0}
   activePickups: []
+  scores:
+  - score: 10
+    name: Trent
+  - score: 12
+    name: Bob
+  - score: 1
+    name: Chad
+  - score: 34
+    name: Dave
+  - score: 19
+    name: Erin
+  MainMenuCanvas: {fileID: 0}

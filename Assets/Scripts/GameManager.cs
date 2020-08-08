@@ -51,10 +51,10 @@ public class GameManager : Singleton<GameManager>
 
     public Canvas MainMenuCanvas;
 
+    public int numOfPlayers = 1;
+
     void Start()
     {
-        MG = GameObject.FindGameObjectWithTag("MG").GetComponent<MapGenerator>();
-
         // Set main menu canvas as enabled, and disable the game over canvas
         MainMenuCanvas.GetComponent<Canvas>().enabled = true;
 
@@ -66,18 +66,12 @@ public class GameManager : Singleton<GameManager>
         //SpawnAggressive();
         //SpawnScout();
         //SpawnCautious();
-
-        //Player1 = GameObject.FindGameObjectWithTag("Player").GetComponent<TankData>();
-        //Enemies = GameObject.FindGameObjectWithTag("Enemy").GetComponent<TankData>();
     }
 
     void Update()
     {
-       // if (PlayerOneLives == 0 && PlayerTwoLives == 0)
-       // {
-          //  SceneManager.LoadScene("Game Over");
-       // }
-
+        MG = GameObject.FindGameObjectWithTag("MG").GetComponent<MapGenerator>();
+        MainMenuCanvas = GameObject.FindGameObjectWithTag("Menu").GetComponent<Canvas>();
         Player1 = GameObject.Find("Player1(Clone)").GetComponent<TankData>();
         Player2 = GameObject.Find("Player2(Clone)").GetComponent<TankData>();
     }

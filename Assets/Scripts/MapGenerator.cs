@@ -141,4 +141,14 @@ public class MapGenerator : MonoBehaviour
     {
         
     }
+
+    public void MapTypeRandom()
+    {
+        mapType = MapType.Random;
+    }
+
+    public void MapTypeMOTD()
+    {
+        mapType = MapType.MapOfTheDay;
+    }
 }
