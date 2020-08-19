@@ -88,3 +88,8 @@ MonoBehaviour:
   - score: 19
     name: Erin
   MainMenuCanvas: {fileID: 0}
+  numOfPlayers: 1
+  musicVolume: 1
+  fxVolume: 1
+  SfxSlider: {fileID: 0}
+  MusicSlider: {fileID: 0}

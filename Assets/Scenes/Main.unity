@@ -257,6 +257,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 280687972}
+        m_MethodName: UpdateSfxVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &104201262
@@ -418,6 +429,17 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 280687972}
+        m_MethodName: UpdateMusicVolume
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &194332579
@@ -550,8 +572,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4a78aca2b6bf242a9edc173c762036, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musicVolume: 1
-  fxVolume: 1
 --- !u!4 &256056460
 Transform:
   m_ObjectHideFlags: 0
@@ -694,6 +714,8 @@ GameObject:
   - component: {fileID: 280687971}
   - component: {fileID: 280687972}
   - component: {fileID: 280687973}
+  - component: {fileID: 280687975}
+  - component: {fileID: 280687974}
   m_Layer: 5
   m_Name: Title Screen
   m_TagString: Untagged
@@ -738,7 +760,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanvasObject: {fileID: 1793016827}
+  MainMenu: {fileID: 348701941}
+  Options: {fileID: 243626144}
   buttonClip: {fileID: 8300000, guid: 256dd1028a93e3446a75f068e0c053bb, type: 3}
+  SfxSlider: {fileID: 104201261}
+  MusicSlider: {fileID: 194332578}
 --- !u!81 &280687973
 AudioListener:
   m_ObjectHideFlags: 0
@@ -747,6 +773,34 @@ AudioListener:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 280687970}
   m_Enabled: 1
+--- !u!114 &280687974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280687970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bdb111cab1bb74dbeec57d1dfc229b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: 2
+  slider: {fileID: 194332578}
+--- !u!114 &280687975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 280687970}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1bdb111cab1bb74dbeec57d1dfc229b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  channel: 1
+  slider: {fileID: 104201261}
 --- !u!1 &295539119
 GameObject:
   m_ObjectHideFlags: 0
@@ -2048,7 +2102,7 @@ MonoBehaviour:
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
   m_overflowMode: 0
-  m_firstOverflowCharacterIndex: -1
+  m_firstOverflowCharacterIndex: 0
   m_linkedTextComponent: {fileID: 0}
   m_isLinkedTextComponent: 0
   m_isTextTruncated: 0
@@ -3433,6 +3487,16 @@ PrefabInstance:
       propertyPath: MainMenuCanvas
       value: 
       objectReference: {fileID: 1793016827}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: SfxSlider
+      value: 
+      objectReference: {fileID: 104201261}
+    - target: {fileID: 8229694365849732564, guid: 6404226c866c5a04683254c77907b8d3,
+        type: 3}
+      propertyPath: MusicSlider
+      value: 
+      objectReference: {fileID: 194332578}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6404226c866c5a04683254c77907b8d3, type: 3}
 --- !u!1 &1447388016
