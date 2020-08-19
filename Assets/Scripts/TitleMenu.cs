@@ -9,7 +9,13 @@ public class TitleMenu : MonoBehaviour
 {
     public Canvas CanvasObject;
 
+    public GameObject MainMenu;
+    public GameObject Options;
+
     public AudioClip buttonClip;
+
+    public Slider SfxSlider;
+    public Slider MusicSlider;
 
     public void StartGame()
     {
@@ -80,5 +86,15 @@ public class TitleMenu : MonoBehaviour
     public void ButtonPress()
     {
         AudioManager.Instance.Play(buttonClip, transform);
+    }
+
+    public void UpdateSfxVolume()
+    {
+        GameManager.Instance.fxVolume = SfxSlider.value;
+    }
+
+    public void UpdateMusicVolume()
+    {
+        GameManager.Instance.musicVolume = MusicSlider.value;
     }
 }

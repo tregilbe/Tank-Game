@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.PackageManager.Requests;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : Singleton<GameManager>
 {
@@ -52,6 +53,12 @@ public class GameManager : Singleton<GameManager>
     public Canvas MainMenuCanvas;
 
     public int numOfPlayers = 1;
+
+    public float musicVolume = 1.0f;
+    public float fxVolume = 1.0f;
+
+    public Slider SfxSlider;
+    public Slider MusicSlider;
 
     void Start()
     {

@@ -16,5 +16,8 @@ public class SoundUpdater : MonoBehaviour
 
         AudioManager.Instance.SetVolume(channel, sliderValue);
     }
-
+    public void Update()
+    {
+        UpdateSoundLevels();
+    }
 }
